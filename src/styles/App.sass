@@ -1,0 +1,160 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap");
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+$font-stack:   "Nunito Sans", sans-serif
+$primary-color: #333
+$font-light: 300
+$font-medium: 600
+$font-heavy: 800
+$box-shadow: 0px 2px 5px hsl(0, 0%, 88%)
+
+body
+  font-family: $font-stack
+  font-weight: $font-light
+
+a
+  padding: 0
+  margin: 0
+  color: black
+
+//App.js styles
+.App
+  display: flex
+  flex-direction: column
+
+.App-bg
+  background-color: hsl(0, 0%, 98%)
+  min-height: 100vh
+  color: black
+
+.App-container
+  display: flex
+  justify-content: center
+  align-items: center
+  padding-top: 1vmin
+
+//header.js styles
+.App-header
+  background-color: hsl(0, 0%, 100%)
+  display: flex
+  flex-direction: row
+  align-items: center
+  padding-left: 3em
+  padding-top: 2em
+  padding-right: 3em
+  padding-top: 2em
+  box-shadow: 0px 2px 5px hsl(0, 0%, 88%)
+  height: auto
+  width: 100%
+
+.App-heading
+  font-weight: $font-heavy
+  font-size: calc(10px + 2vmin)
+
+.Heading-right
+  display: flex
+  flex: 2
+  justify-content: flex-end
+  align-content: center
+
+.App-sub-heading
+  font-weight: $font-heavy
+  margin-left: 10px
+  font-size: calc(2px + 2vmin)
+
+.App-sub-heading-icon
+  align-content: center
+  padding: 1em
+
+//country_card.js styles
+.country-card-container
+  background-color: hsl(0,0,100%)
+  margin: 1.5vw
+  box-shadow: 0px 2px 5px hsl(0, 0%, 88%)
+  padding: 0px
+  border-radius: 6px
+
+.country-card-flag
+  width: 100%
+  border-radius: 6px 6px 0px 0px
+
+.country-card-content
+  padding: 20px
+
+.country-card-name
+  font-weight: $font-heavy
+  padding-bottom: 5px
+
+.county-card-property
+  font-weight: $font-medium
+
+.country-card-section
+  margin: 0px
+
+//search_and_filter.js style
+.search-container
+  display: flex
+  padding-top: 5vmin
+
+.search-input
+  height: 8vh
+  padding: 2vmin
+  align-items: center
+
+
+.filter
+  display: flex
+  justify-content: flex-start
+  align-items: center
+
+.filter-background
+  background-color: hsl(0,0,100%)
+  box-shadow: $box-shadow
+
+.filter-region-name
+  text-align: center
+  font-weight: $font-medium
+
+//country-details.js styles
+.back-container
+  padding: 5vmin 3vmin 5vmin 3vmin
+
+.btn-back
+  background-color: hsl(0,0,100%)
+  font-weight: $font-medium
+  box-shadow: $box-shadow
+  width: 10vw
+  border-radius: 5px
+
+.details-containter
+  padding: 0vw 3vw 0vw 3vw
+
+.detail-img
+  width: 100%
+
+.details-content
+  display: flex
+  flex-direction: column
+  align-items: flex-start
+  justify-content: center
+  padding: 3vw 3vw 0vw 5vw
+
+.detail-property
+  font-weight: $font-heavy
+
+.content-heading
+  font-weight: $font-heavy
+  font-size: calc(10px + 2vmin)
+  margin-bottom: 3vw
+
+.content-footer
+  margin-top: 5vw
+  align-items: center
+  justify-content: flex-end
+
+.btn-border
+  background: hsl(0,0,100%)
+  margin: 0px
+  padding-top: 0px
+  margin-left: 2px
+  box-shadow: $box-shadow
