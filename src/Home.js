@@ -1,69 +1,63 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "./components/header";
 import CountryCard from "./components/country_card";
 import SearchAndFilter from "./components/search_and_filter";
 import { doFetchBreifData } from "./Network/Services";
 import "./styles/App.sass";
 
-class Home extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      countries: [],
-      searchCountried: [],
-      showCountries: []
-    };
-    this.handleOnSearch = this.handleOnSearch.bind(this);
-    this.handleOnFilterChange = this.handleOnFilterChange.bind(this);
+function Home() {
+  const [countries, setCountries] = useState([]);
+  const [showCountries, setShowCountries] = useState([]);
+
+  async function fetchCountries() {
+    const countriesArray = await doFetchBreifData();
+    setCountries(countriesArray);
+    setShowCountries(countriesArray);
   }
 
-  async componentDidMount() {
-    const countries = await doFetchBreifData();
-    this.setState({ countries, showCountries: countries });
-  }
+  useEffect(() => {
+    if (countries.length === 0) {
+      fetchCountries();
+    }
+  }, [countries]);
 
-  handleOnSearch(value) {
-    const { countries } = this.state;
+  const handleOnSearch = value => {
     const result = countries.filter(country =>
       country.name.toLowerCase().includes(value.toLowerCase()) ? country : null
     );
-    this.setState({
-      showCountries: result
-    });
-  }
+    setShowCountries(result);
+  };
 
-  handleOnFilterChange(value) {
-    const { countries } = this.state;
+  const handleOnFilterChange = value => {
     let result = countries.filter(country =>
       country.region.toLowerCase() === value.toLowerCase() ? country : null
     );
+    console.log(countries);
+    console.log(result);
     result = result.length === 0 ? countries : result;
-    this.setState({
-      showCountries: result
-    });
-  }
+    setShowCountries(result);
+  };
 
-  render() {
-    const { showCountries } = this.state;
-    return (
-      <div className="App">
-        <div className="App-bg">
-          <Header />
-          <div className="container-fluid">
-            <SearchAndFilter
-              onSearch={this.handleOnSearch}
-              onFilterChange={this.handleOnFilterChange}
-            />
-            <div className="App-container row">
-              {showCountries.map(country => (
-                <CountryCard key={country.name} data={country} />
-              ))}
-            </div>
+  return (
+    <div className="App">
+      <div className="App-bg">
+        <Header />
+        <div className="container-fluid">
+          <SearchAndFilter
+            onSearch={value => handleOnSearch(value)}
+            onFilterChange={value => handleOnFilterChange(value)}
+          />
+          <div className="App-container row">
+            {showCountries.length === 0
+              ? null
+              : showCountries.map(country => (
+                  <CountryCard key={country.name} data={country} />
+                ))}
           </div>
         </div>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default Home;

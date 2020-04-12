@@ -1,9 +1,9 @@
 const BASE_URL = "https://restcountries.eu/rest/v2";
 const GET_ALL = "/all";
-const GET_BY_NAME = name => "/name/" + name;
 const GET_BY_FULL_NAME = name => "/name/" + name + `?fullText=true`;
-const GET_BY_CAPITAL = capital => "/capital/" + capital;
-const GET_BY_REGION = region => "/region/" + region;
+// const GET_BY_NAME = name => "/name/" + name;
+// const GET_BY_CAPITAL = capital => "/capital/" + capital;
+// const GET_BY_REGION = region => "/region/" + region;
 
 const FILTER = "?fields=name;capital;population;region;flag";
 const GET_ALL_BREIF = BASE_URL + GET_ALL + FILTER;
